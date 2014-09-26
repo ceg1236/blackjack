@@ -6,6 +6,7 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     @add(@deck.pop()).last()
+    @checkBusted()
 
   scores: ->
     # The scores are an array of potential scores.
@@ -20,4 +21,4 @@ class window.Hand extends Backbone.Collection
     if hasAce then [score, score + 10] else [score]
 
   checkBusted: ->
-    @scores() > 21
+    if @scores() > 21 then @trigger('busted', @)
