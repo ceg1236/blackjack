@@ -32,7 +32,7 @@ class window.Hand extends Backbone.Collection
     if @scores()[0] > 21 then @trigger('busted', @)
 
   dealer: ->
-    while @scores() < 17
+    while @scores()[0] < 17
       @hit()
     @trigger('checkWinner', @)
 
