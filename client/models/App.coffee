@@ -10,13 +10,17 @@ class window.App extends Backbone.Model
     pScore = @get('playerHand').scores()
     dScore = @get('dealerHand').scores()
 
+    result
+
     if dScore > 21 and pScore > 21
-     console.log('draw')
+     result = 'Draw'
     else if dScore > 21
-     console.log('player wins')
+      result = 'You Win'
     else if pScore > 21
-     console.log('dealer wins')
+      result = 'Dealer Wins'
     else if pScore < dScore
-     console.log('dealer WINS')
+      result = 'Dealer Wins'
     else
-      console.log('plaer WINS')
+      result = 'You Win'
+
+    @trigger('winner', result)
