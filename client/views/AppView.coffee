@@ -14,8 +14,16 @@ class window.AppView extends Backbone.View
   initialize: ->
     @render()
     @model.get('playerHand').on('busted', ->
-      $('.hit-button').prop('disabled', true)
-      )
+      $('button').prop('disabled', true)
+    )
+    @model.get('dealerHand').on('busted', ->
+      console.log('check winner')
+    )
+
+    @model.get('playerHand').on('stand', =>
+
+      @model.get('dealerHand').dealer()
+    )
 
   render: ->
     @$el.children().detach()

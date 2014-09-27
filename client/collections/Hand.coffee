@@ -8,6 +8,11 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop()).last()
     @checkBusted()
 
+  stand: ->
+
+    @trigger('stand', @)
+
+
   scores: ->
     # The scores are an array of potential scores.
     # Usually, that array contains one element. That is the only score.
@@ -22,3 +27,9 @@ class window.Hand extends Backbone.Collection
 
   checkBusted: ->
     if @scores() > 21 then @trigger('busted', @)
+
+  dealer: ->
+    while @scores() < 17
+      @hit()
+
+
