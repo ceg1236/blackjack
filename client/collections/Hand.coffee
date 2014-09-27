@@ -24,13 +24,12 @@ class window.Hand extends Backbone.Collection
     if hasAce then [score, score + 10] else [score]
 
   getScore: (scores) ->
-    if scores.length == 2 and scores[1] < 21
+    if scores.length == 2 and scores[1] <= 21
       scores[1]
     else
       scores[0]
 
   checkBusted: ->
-
     if @scores()[0] > 21 then @trigger('busted', @)
 
   dealer: ->
@@ -38,4 +37,3 @@ class window.Hand extends Backbone.Collection
     while @scores()[0] < 17
       @hit()
     @trigger('checkWinner', true, @)
-

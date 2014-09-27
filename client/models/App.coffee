@@ -13,7 +13,6 @@ class window.App extends Backbone.Model
       scores[0]
 
   checkWinner: ->
-
     pScore = @getScore(@get('playerHand').scores())
     dScore = @getScore(@get('dealerHand').scores())
 

@@ -11,7 +11,6 @@ class window.AppView extends Backbone.View
     "click .hit-button": -> @model.get('playerHand').hit()
     "click .stand-button": -> @model.get('playerHand').stand()
 
-
   initialize: ->
     @render()
     @model.get('playerHand').on('busted stand', =>
@@ -25,7 +24,6 @@ class window.AppView extends Backbone.View
 
     @model.on('winner', (winner) =>
       $('.result').text(winner)
-
     )
 
   render: ->
