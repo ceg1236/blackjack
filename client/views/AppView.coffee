@@ -19,15 +19,11 @@ class window.AppView extends Backbone.View
       @model.get('dealerHand').dealer()
     )
 
-    @model.get('dealerHand').on('busted checkWinner', =>
+    @model.get('dealerHand').on('checkWinner', =>
       @model.checkWinner()
     )
 
-    @model.get('playerHand').on('stand', =>
-      @model.get('dealerHand').dealer()
-    )
-
-    @model.on('winner', (winner) ->
+    @model.on('winner', (winner) =>
       $('.result').text(winner)
     )
 

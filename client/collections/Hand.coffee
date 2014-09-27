@@ -24,14 +24,11 @@ class window.Hand extends Backbone.Collection
     if hasAce then [score, score + 10] else [score]
 
   checkBusted: ->
-    console.log('score', @scores())
-    # is scores length 2
-    # if so, and both > 21, busted
-    # if only one elmt, only check that
 
     if @scores()[0] > 21 then @trigger('busted', @)
 
   dealer: ->
+    @.at(0).flip()
     while @scores()[0] < 17
       @hit()
     @trigger('checkWinner', @)
