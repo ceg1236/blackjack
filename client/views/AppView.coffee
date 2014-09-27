@@ -25,6 +25,7 @@ class window.AppView extends Backbone.View
 
     @model.on('winner', (winner) =>
       $('.result').text(winner)
+
     )
 
   render: ->

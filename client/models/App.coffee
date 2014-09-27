@@ -18,7 +18,7 @@ class window.App extends Backbone.Model
     dScore = @getScore(@get('dealerHand').scores())
 
     result
-    if dScore > 21 and pScore > 21
+    if (dScore > 21 and pScore > 21) or (dScore == pScore)
      result = 'Draw...'
     else if dScore > 21
       result = 'You Win!'

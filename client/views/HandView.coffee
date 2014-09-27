@@ -9,10 +9,18 @@ class window.HandView extends Backbone.View
     @collection.on 'add remove change', => @render()
     @render()
 
-  render: ->
+    @collection.on 'checkWinner', (gameover)=>
+      @render()
+
+  render:(gameover) ->
     @$el.children().detach()
+    console.log('render',@collection.getScore(@collection.scores()))
     @$el.html @template @collection
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
-    @$('.score').text @collection.scores()[0]
-
+    if(gameover)
+      @$('.score').text @collection.getScore(@collection.scores())
+    else
+      @$('.score').text @collection.scores()
+    # Check if game is over - if so, only show relevent score
+# Not exactly working - not getting into if clause
