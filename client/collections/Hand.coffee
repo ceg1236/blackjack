@@ -9,9 +9,7 @@ class window.Hand extends Backbone.Collection
     @checkBusted()
 
   stand: ->
-
     @trigger('stand', @)
-
 
   scores: ->
     # The scores are an array of potential scores.
@@ -31,5 +29,5 @@ class window.Hand extends Backbone.Collection
   dealer: ->
     while @scores() < 17
       @hit()
-
+    @trigger('checkWinner', @)
 
